@@ -25,11 +25,13 @@
     "installPaths":{
         "coldbox":"coldbox/",
         "testbox":"testbox/",
-        "ninja_api":"modules/ninja_api/"
+        "ninja_api":"modules/ninja_api/",
+		"cors": "modules/cors"
     },
     "dependencies":{
         "coldbox":"^7.0.0",
-        "ninja_api":"^0.0.10"
+        "ninja_api":"^0.0.10",
+		"cors":"^3.0.8"
     },
     "scripts":{},
     "testbox":{
