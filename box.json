@@ -31,7 +31,8 @@
     "dependencies":{
         "coldbox":"^7.0.0",
         "ninja_api":"^0.0.10",
-		"cors":"^3.0.8"
+		"cors":"^3.0.8",
+		"testbox":"^5.0.0+1"
     },
     "scripts":{},
     "testbox":{
