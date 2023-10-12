@@ -1,6 +1,6 @@
 {
     "name":"Ninja API Site",
-    "version":"1.0.6",
+    "version":"1.0.7",
     "author":"Dan Card",
     "slug":"ninja_api_site",
     "createPackageDirectory":false,
@@ -25,14 +25,12 @@
     "installPaths":{
         "coldbox":"coldbox/",
         "testbox":"testbox/",
-        "ninja_api":"modules/ninja_api/",
         "cors":"modules/cors/",
         "hyper":"modules/hyper/",
         "uime":"modules/uime/"
     },
     "dependencies":{
         "coldbox":"^7.0.0",
-        "ninja_api":"^0.0.12",
         "cors":"^3.0.8",
         "hyper":"^7.2.1",
         "uime":"^0.0.5"
