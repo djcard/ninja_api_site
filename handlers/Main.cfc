@@ -5,35 +5,8 @@ component extends="coldbox.system.EventHandler" {
 	 */
 	function index( event, rc, prc ){
 		prc.welcomeMessage = "Welcome to ColdBox!";
-		event.setView( "main/index" );
+		event.setView( "ninja" );
 	}
-
-	/**
-	 * Produce some restfulf data
-	 */
-	function data( event, rc, prc ){
-		return [
-			{ "id" : createUUID(), "name" : "Luis" },
-			{ "id" : createUUID(), "name" : "Joe" },
-			{ "id" : createUUID(), "name" : "Bob" },
-			{ "id" : createUUID(), "name" : "Darth" }
-		];
-	}
-
-	/**
-	 * Relocation example
-	 */
-	function doSomething( event, rc, prc ){
-		relocate( "main.index" );
-	}
-
-	/**
-	 * --------------------------------------------------------------------------
-	 * Implicit Actions
-	 * --------------------------------------------------------------------------
-	 * All the implicit actions below MUST be declared in the config/Coldbox.cfc in order to fire.
-	 * https://coldbox.ortusbooks.com/getting-started/configuration/coldbox.cfc/configuration-directives/coldbox#implicit-event-settings
-	 */
 
 	function onAppInit( event, rc, prc ){
 	}
@@ -46,7 +19,6 @@ component extends="coldbox.system.EventHandler" {
 
 	function onSessionStart( event, rc, prc ){
 	}
-
 	function onSessionEnd( event, rc, prc ){
 		var sessionScope     = event.getValue( "sessionReference" );
 		var applicationScope = event.getValue( "applicationReference" );

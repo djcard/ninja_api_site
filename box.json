@@ -1,6 +1,6 @@
 {
     "name":"Ninja API Site",
-    "version":"1.0.7",
+    "version":"1.0.8",
     "author":"Dan Card",
     "slug":"ninja_api_site",
     "createPackageDirectory":false,
@@ -27,13 +27,15 @@
         "testbox":"testbox/",
         "cors":"modules/cors/",
         "hyper":"modules/hyper/",
-        "uime":"modules/uime/"
+        "uime":"modules/uime/",
+        "qb":"modules/qb/"
     },
     "dependencies":{
         "coldbox":"^7.0.0",
         "cors":"^3.0.8",
         "hyper":"^7.2.1",
-        "uime":"^0.0.5"
+        "uime":"^0.0.5",
+        "qb":"^11.1.0"
     },
     "scripts":{},
     "testbox":{

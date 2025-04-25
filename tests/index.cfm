@@ -7,9 +7,10 @@
 	rootMapping = "/tests/specs";
 	rootPath 	= expandPath( rootMapping );
 	targetPath 	= rootPath;
+	pathArr = url.keyExists("path") ? url.path.listToArray("/\") : [];
 	// Append navigation path
 	if( len( url.path ) ){
-		targetPath = getCanonicalPath( rootpath & "/" & url.path );
+		targetPath = getCanonicalPath( rootpath & "/" & pathArr.toList("/") );
 		// Avoid traversals
 		if( !findNoCase( rootpath, targetPath ) ){
 			targetPath = rootpath;
@@ -29,9 +30,12 @@
 	// Get target path listing
 	qResults = directoryList( targetPath, false, "query", "", "name" );
 	// Get the back path
-	if( len( url.path ) ){
-		backPath = replacenocase( url.path, listLast( url.path, "/" ), "" );
-		backPath = reReplace( backpath, "/$", "" );
+	if( len( pathArr ) ){
+
+		
+		backpath = pathArr.slice(1).deleteAt( pathArr.len() ).toList("/");
+		//backPath = replacenocase( url.path, listLast( url.path, "/" ), "" );
+		//backPath = reReplace( backpath, "/$", "" );
 	}
 	// TestBox Assets
 	ASSETS_DIR = expandPath( "/testbox/system/reports/assets" );
@@ -108,7 +112,7 @@
 						<cfif qResults.type eq "Dir">
 							<a
 								class="btn btn-secondary btn-sm my-1"
-								href="index.cfm?path=#urlEncodedFormat( url.path & qResults.name )#"
+								href="index.cfm?path=#createPath(pathArr,qResults.name)#"
 							>
 								&##x271A; #qResults.name#
 							</a>
@@ -146,3 +150,10 @@
 </body>
 </html>
 </cfoutput>
+
+<cfscript>
+	function createPath(pathArray, name){
+
+		return pathArray.len() ? pathArr.slice(1).append(urlEncodedFormat(name)).toList("/") : name;
+	}
+</cfscript>
