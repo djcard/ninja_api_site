@@ -7,19 +7,13 @@ component extends="coldbox.system.testing.basetestcase" {
 	// executes before all suites+specs in the run() method
 	function beforeAll(){
 		super.beforeAll();
-		variables.testboxMockingUtils = getInstance( "mocking@testboxMockingUtils" );
-	}
-
-	// executes after all suites+specs in the run() method
-	function afterAll(){
-		variables.testboxMockingUtils.reloadModule( "qb" );
 	}
 
 	/*********************************** BDD SUITES ***********************************/
 
 	function run( testResults, testBox ){
 		// all your suites go here.
-		describe( "ObtainStyle should", function(){
+		describe( "Obtain Book Data should", function(){
 			beforeEach( function(){
 				testObj  = createMock( object = getInstance( "models.students" ) );
 				fakeISBN = mockdata( $type = "words:1", $num = 1 )[ 1 ];

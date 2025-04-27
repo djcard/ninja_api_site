@@ -10,45 +10,38 @@ component extends="coldbox.system.testing.basetestcase" {
 		super.setup();
 	}
 
-	// executes after all suites+specs in the run() method
-	function afterAll(){
-	}
-
 	/*********************************** BDD SUITES ***********************************/
 
 	function run( testResults, testBox ){
-		// all your suites go here.
 		describe( "ObtainStyle should", function(){
 			it( "Return `level` and whatever is submitted", function(){
-				expect( true ).tobeFalse();
-				 var testObj = getInstance( "models.Students" );
-				 var fakeVal = randRange( 1, 1000 );
-				// var testme  = testObj.obtainStyle( fakeVal );
-				// expect( testme ).tobe( "level#fakeVal#" );
+				var testObj = getInstance( "models.Students" );
+				var fakeVal = randRange( 1, 1000 );
+				var testme  = testObj.obtainStyle( fakeVal );
+				expect( testme ).tobe( "level#fakeVal#" );
 			} );
 			it( "If a non-number is submitted, throw an error", function(){
-				expect( true ).tobeFalse();
-				// var testObj = getInstance( "models.Students" );
+				var testObj = getInstance( "models.Students" );
 
-				// expect( function(){
-				//	testObj.obtainStyle( "a" );
-				//  } ).tothrow( type = "expression", message = "A letter did not throw an exception" );
+				expect( function(){
+					testObj.obtainStyle( "a" );
+				} ).tothrow( type = "expression", message = "A letter did not throw an exception" );
 
-				// expect( function(){
-				//	testObj.obtainStyle( {} );
-				// } ).tothrow( type = "expression", message = "A struct did not throw an exception" );
+				expect( function(){
+					testObj.obtainStyle( {} );
+				} ).tothrow( type = "expression", message = "A struct did not throw an exception" );
 
-				// expect( function(){
-				//	testObj.obtainStyle( [] );
-				// } ).tothrow( type = "expression", message = "An array did not throw an exception" );
+				expect( function(){
+					testObj.obtainStyle( [] );
+				} ).tothrow( type = "expression", message = "An array did not throw an exception" );
 
-				// $assert.throws(
-				//	target = function(){
-				//		testObj.obtainStyle( "a" );
-				//	},
-				//	type    = "expression",
-				//	message = "A string did not throw an exception"
-				// );
+				$assert.throws(
+					target = function(){
+						testObj.obtainStyle( "a" );
+					},
+					type    = "expression",
+					message = "A string did not throw an exception"
+				);
 			} );
 		} );
 	}

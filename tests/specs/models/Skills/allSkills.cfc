@@ -20,7 +20,7 @@ component extends="coldbox.system.testing.BaseTestCase" {
 		// all your suites go here.
 		describe( "My First Suite", function(){
 			beforeEach( function(){
-				testObj = getInstance( "skills@ninja" );
+				testObj = getInstance( "models.skills" );
 			} );
 			it( "A Spec", function(){
 				fail( "implement" );

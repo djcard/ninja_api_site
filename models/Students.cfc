@@ -28,8 +28,8 @@ component accessors="true" {
 	 * @id optional numeric student id.
 	 **/
 	function createStudentArray( numeric id = 0 ){
-		var tableData   = [ { "contents" : createHeaderRow(), "classes" : "" } ];
-		// /writeDump(tableData);
+		var tableData   = [ { "contents" : createHeaderRow( variables.skillService.allSkills() ), "classes" : "" } ];
+		//writeDump(tableData);
 		var studentRows = createStudentRows( arguments.id );
 
 		return isNull( studentRows ) ? tableData : tableData.append( studentRows, true );
@@ -70,7 +70,6 @@ component accessors="true" {
 		try {
 			return qb
 				.from( "students" )
-				.setGrammar( wirebox.getInstance( "SqlServerGrammar@qb" ) )
 				.when( id > 0, function( q ){
 					q.where( "id", "=", id );
 				} )
@@ -103,10 +102,10 @@ component accessors="true" {
 	 *
 	 * @headerData - an array of structs, each must have the key `name`
 	 **/
-	Array function createHeaderRow(){
-		var allSkills = skillService.allSkills();
+	Array function createHeaderRow( array skills = [] ){
+;
 		var base      = [ { "header" : true, "contents" : "", "classes" : "" } ];
-		allSkills.each( function( item ){
+		arguments.skills.each( function( item ){
 			base.append( { "header" : true, "contents" : item.name, "classes" : "" } );
 		} );
 
@@ -123,9 +122,7 @@ component accessors="true" {
 	 **/
 	function findStudentLevel( required array skillData = studentData, string keyName = "skillLevel" ){
 		return skillData.reduce( function( currLevel, item ){
-			// writeDump(item[ keyName ]);
-			// writeDump(item[ keyName ] < currLevel ? item[ keyName ] : currLevel);
-			return item[ keyName ] < currLevel ? item[ keyName ] : currLevel;
+			return item.keyExists(keyName) && item[ keyName ] < currLevel ? item[ keyName ] : currLevel;
 		}, 10 );
 	}
 
@@ -138,7 +135,6 @@ component accessors="true" {
 	function studentSkills( numeric studentId = 0, string skillCode = "" ){
 		try {
 			return qb
-				.setGrammar( wirebox.getInstance( "SqlServerGrammar@qb" ) )
 				.from( "studentSkill" )
 				.when( studentId > 0, function( q ){
 					q.where( "studentId", "=", studentId );
@@ -309,7 +305,7 @@ component accessors="true" {
 	}
 
 	function validateStudentLevel( required numeric level ){
-		return level <= maxLevel ? level : 0;
+		return level <= maxLevel && level > -1 ? level : 0;
 	}
 
 }

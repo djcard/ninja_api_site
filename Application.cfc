@@ -66,7 +66,7 @@ component {
 	 * ORM + Datasource Settings
 	 * --------------------------------------------------------------------------
 	 */
-	this.datasource = "coldbox";
+	this.datasource = "ninja";
 
 	/**
 	 * Fires when the application starts

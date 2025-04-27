@@ -9,15 +9,12 @@ component extends="coldbox.system.testing.basetestcase" {
 		super.beforeAll();
 	}
 
-	// executes after all suites+specs in the run() method
-	function afterAll(){
-	}
 
 	/*********************************** BDD SUITES ***********************************/
 
 	function run( testResults, testBox ){
 		// all your suites go here.
-		describe( "ObtainStyle should", function(){
+		describe( "BumpSkills should", function(){
 			beforeEach( function(){
 				fakeStudentId  = randRange( 1, 1000 );
 				fakeSkillCode  = mockData( $type = "words:1", $num = 1 )[ 1 ];
@@ -31,7 +28,7 @@ component extends="coldbox.system.testing.basetestcase" {
 					}
 				];
 
-				mockSkillService = createMock( object = getInstance( "skills@ninja" ) );
+				mockSkillService = createMock( object = getInstance( "models.skills" ) );
 				mockSkillService.$( method = "saveSkillLevel" );
 
 				testObj = createMock( object = getInstance( "models.students" ) );

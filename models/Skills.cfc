@@ -7,7 +7,6 @@ component {
 		try {
 			return qb
 				.from( "skills" )
-				.setGrammar( wirebox.getInstance( "SqlServerGrammar@qb" ) )
 				.when( code.len() > 0, function( q ){
 					q.where( "skillCode", "=", code );
 				} )
@@ -19,8 +18,8 @@ component {
 	}
 
 	function dataSourceExists( dsourceName = "ninja" ){
-		writeDump( getApplicationSettings() );
-		writeDump( server );
+		//writeDump( getApplicationSettings() );
+		//writeDump( server );
 	}
 
 	function skillDataJson(){
@@ -47,8 +46,7 @@ component {
 	}
 
 	function saveSkillLevel( studentId, skillCode, skillLevel ){
-		qb.setGrammar( wirebox.getInstance( "SqlServerGrammar@qb" ) )
-			.from( "studentSkill" )
+		qb.from( "studentSkill" )
 			.updateOrInsert(
 				{
 					studentId  : studentId,
